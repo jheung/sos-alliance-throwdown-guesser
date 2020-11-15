@@ -11,10 +11,10 @@ const app = express();
 
 app.use(cors());
 app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 
-app.use("/api", indexRouter);
+app.use("/api/process", indexRouter);
 
 app.listen(PORT, () => console.log(`API listening on port ${PORT}!`));
 
